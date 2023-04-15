@@ -4,9 +4,9 @@ import "fmt" //Format Package
 
 func main() { //entry point
 
-	var conferenceName string = "Go Conference"
-	const conferenceTickets int = 50 //cant be changed
-	var remainingTickets int = 50    //decreases as tickets get booked.
+	conferenceName := "Go Conference" // short declaration...const cannot be declared like this and type declaration cannot be done explicitly
+	const conferenceTickets int = 50  //cant be changed
+	var remainingTickets int = 50     //decreases as tickets get booked.
 
 	fmt.Printf("conferenceName is %T, conferenceTickets is %T, remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
 

@@ -5,8 +5,8 @@ import "fmt" //Format Package
 func main() { //entry point
 
 	conferenceName := "Go Conference" // short declaration...const cannot be declared like this and type declaration cannot be done explicitly
-	const conferenceTickets int = 50  //cant be changed
-	var remainingTickets int = 50     //decreases as tickets get booked.
+	const conferenceTickets uint = 50 //cant be changed
+	var remainingTickets uint = 50    //decreases as tickets get booked.
 
 	fmt.Printf("conferenceName is %T, conferenceTickets is %T, remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
 
@@ -20,7 +20,7 @@ func main() { //entry point
 	var firstName string
 	var lastName string
 	var email string
-	var userTickets int
+	var userTickets uint //uint since tickets cant be negative
 
 	// ask the user for name and no.of tickets
 	fmt.Println("Enter your first name: ")
@@ -35,6 +35,8 @@ func main() { //entry point
 	fmt.Println("Enter number of tickets: ")
 	fmt.Scan(&userTickets)
 
-	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v\n", firstName, lastName, userTickets, email)
+	remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
 
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
+	fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
 }

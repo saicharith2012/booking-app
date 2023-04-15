@@ -17,12 +17,24 @@ func main() { //entry point
 	fmt.Print("Get your tickets here to attend.")
 	fmt.Println("")
 
-	var userName string
+	var firstName string
+	var lastName string
+	var email string
 	var userTickets int
-	// ask the user for name and no.of tickets
 
-	userName = "Dameon"
-	userTickets = 3
-	fmt.Printf("%v has booked %v tickets.\n", userName, userTickets)
+	// ask the user for name and no.of tickets
+	fmt.Println("Enter your first name: ")
+	fmt.Scan(&firstName) //scan for input ...takes memory address(pointer) of the variables as the argument.
+
+	fmt.Println("Enter your last name: ")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Enter your email: ")
+	fmt.Scan(&email)
+
+	fmt.Println("Enter number of tickets: ")
+	fmt.Scan(&userTickets)
+
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v\n", firstName, lastName, userTickets, email)
 
 }

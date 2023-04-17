@@ -7,6 +7,7 @@ func main() { //entry point
 	conferenceName := "Go Conference" // short declaration...const cannot be declared like this and type declaration cannot be done explicitly
 	const conferenceTickets uint = 50 //cant be changed
 	var remainingTickets uint = 50    //decreases as tickets get booked.
+	var bookings [50]string
 
 	fmt.Printf("conferenceName is %T, conferenceTickets is %T, remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
 
@@ -36,6 +37,12 @@ func main() { //entry point
 	fmt.Scan(&userTickets)
 
 	remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
+	bookings[0] = firstName + " " + lastName
+
+	fmt.Printf("The whole array: %v\n", bookings)
+	fmt.Printf("The first value: %v\n", bookings[0])
+	fmt.Printf("Type of the array: %T\n", bookings)
+	fmt.Printf("The size of the array: %v\n", len(bookings))
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)

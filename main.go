@@ -37,14 +37,10 @@ func main() { //entry point
 	fmt.Scan(&userTickets)
 
 	remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
-	// bookings[0] = firstName + " " + lastName
 	bookings = append(bookings, firstName+" "+lastName)
-
-	fmt.Printf("The whole array: %v\n", bookings)
-	fmt.Printf("The first value: %v\n", bookings[0])
-	fmt.Printf("Type of the array: %T\n", bookings)
-	fmt.Printf("The size of the array: %v\n", len(bookings))
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
+
+	fmt.Printf("These are all our bookings: %v\n", bookings)
 }

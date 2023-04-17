@@ -7,7 +7,7 @@ func main() { //entry point
 	conferenceName := "Go Conference" // short declaration...const cannot be declared like this and type declaration cannot be done explicitly
 	const conferenceTickets uint = 50 //cant be changed
 	var remainingTickets uint = 50    //decreases as tickets get booked.
-	var bookings [50]string
+	var bookings []string
 
 	fmt.Printf("conferenceName is %T, conferenceTickets is %T, remainingTickets is %T\n", conferenceName, conferenceTickets, remainingTickets)
 
@@ -37,7 +37,8 @@ func main() { //entry point
 	fmt.Scan(&userTickets)
 
 	remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
-	bookings[0] = firstName + " " + lastName
+	// bookings[0] = firstName + " " + lastName
+	bookings = append(bookings, firstName+" "+lastName)
 
 	fmt.Printf("The whole array: %v\n", bookings)
 	fmt.Printf("The first value: %v\n", bookings[0])

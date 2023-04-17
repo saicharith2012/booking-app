@@ -13,34 +13,39 @@ func main() { //entry point
 
 	// Println ends the output with a new line.
 	// Printf is for formatted data
-	fmt.Printf("Welcome to %v booking application\n", conferenceName)
-	fmt.Printf("We have a total of %v tickets and %v are remaining.\n", conferenceTickets, remainingTickets)
-	fmt.Print("Get your tickets here to attend.")
-	fmt.Println("")
 
-	var firstName string
-	var lastName string
-	var email string
-	var userTickets uint //uint since tickets cant be negative
+	for {
+		fmt.Printf("Welcome to %v booking application\n", conferenceName)
+		fmt.Printf("We have a total of %v tickets and %v are remaining.\n", conferenceTickets, remainingTickets)
+		fmt.Print("Get your tickets here to attend.")
+		fmt.Printf("\n")
 
-	// ask the user for name and no.of tickets
-	fmt.Println("Enter your first name: ")
-	fmt.Scan(&firstName) //scan for input ...takes memory address(pointer) of the variables as the argument.
+		var firstName string
+		var lastName string
+		var email string
+		var userTickets uint //uint since tickets cant be negative
 
-	fmt.Println("Enter your last name: ")
-	fmt.Scan(&lastName)
+		// ask the user for name and no.of tickets
+		fmt.Println("Enter your first name: ")
+		fmt.Scan(&firstName) //scan for input ...takes memory address(pointer) of the variables as the argument.
 
-	fmt.Println("Enter your email: ")
-	fmt.Scan(&email)
+		fmt.Println("Enter your last name: ")
+		fmt.Scan(&lastName)
 
-	fmt.Println("Enter number of tickets: ")
-	fmt.Scan(&userTickets)
+		fmt.Println("Enter your email: ")
+		fmt.Scan(&email)
 
-	remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
-	bookings = append(bookings, firstName+" "+lastName)
+		fmt.Println("Enter number of tickets: ")
+		fmt.Scan(&userTickets)
 
-	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
-	fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
+		remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
+		bookings = append(bookings, firstName+" "+lastName)
 
-	fmt.Printf("These are all our bookings: %v\n", bookings)
+		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
+		fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
+
+		fmt.Printf("These are all our bookings: %v\n", bookings)
+
+		fmt.Printf(" __________________________________________________________\n\n")
+	}
 }

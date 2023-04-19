@@ -1,6 +1,9 @@
 package main
 
-import "fmt" //Format Package
+import (
+	"fmt" //Format Package
+	"strings"
+)
 
 func main() { //entry point
 
@@ -14,11 +17,11 @@ func main() { //entry point
 	// Println ends the output with a new line.
 	// Printf is for formatted data
 
+	//adding an Infinite For loop to execute the code of bookings multiple times.
 	for {
 		fmt.Printf("Welcome to %v booking application\n", conferenceName)
 		fmt.Printf("We have a total of %v tickets and %v are remaining.\n", conferenceTickets, remainingTickets)
-		fmt.Print("Get your tickets here to attend.")
-		fmt.Printf("\n")
+		fmt.Print("Get your tickets here to attend.\n")
 
 		var firstName string
 		var lastName string
@@ -39,12 +42,20 @@ func main() { //entry point
 		fmt.Scan(&userTickets)
 
 		remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
-		bookings = append(bookings, firstName+" "+lastName)
+		bookings = append(bookings, firstName+" "+lastName+",")
 
 		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
 		fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
 
-		fmt.Printf("These are all our bookings: %v\n", bookings)
+		firstNames := []string{}
+
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0]+",")
+
+		}
+
+		fmt.Printf("The first names of all our bookings are: %v\n", firstNames)
 
 		fmt.Printf(" __________________________________________________________\n\n")
 	}

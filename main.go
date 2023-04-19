@@ -41,7 +41,13 @@ func main() { //entry point
 		fmt.Println("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
 
-		if userTickets <= remainingTickets {
+		// user input validation
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2 // firstName and lastName should contain atleast two letters.
+		isValidEmail := strings.Contains(email, "@")             // email must contain @ symbol
+		isTicketNumberPositive := userTickets > 0
+		isValidTicketNumber := userTickets <= remainingTickets // userTickets must be positive and less or equal to remaining tickets.
+
+		if isValidName && isValidEmail && isTicketNumberPositive && isValidTicketNumber {
 
 			remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
 			bookings = append(bookings, firstName+" "+lastName+",")
@@ -66,9 +72,20 @@ func main() { //entry point
 				fmt.Println("Our Conference is booked out. Come back next year.")
 				break //exits the program
 			}
-		} else {
-			fmt.Printf("We have only %v tickets available. So you can't book %v tickets. Come back next time.\n", remainingTickets, userTickets)
-			// continue; not needed.
+		} else { //only ifs are used instead of "else if" since each conditon must be checked once.
+			if !isValidName {
+				fmt.Println("The firstname or lastname you entered is invalid. Atleast 2 characters long.")
+			}
+			if !isValidEmail {
+				fmt.Println("The email you have entered is invalid.")
+			}
+			if !isTicketNumberPositive {
+				fmt.Println("The number of tickets you entered is invalid.")
+			}
+			if !isValidTicketNumber {
+				fmt.Printf("We have only %v tickets available. So you can't book %v tickets. Come back next time.\n", remainingTickets, userTickets)
+				// continue; not needed.
+			}
 			fmt.Printf(" __________________________________________________________\n\n")
 		}
 	}

@@ -19,9 +19,8 @@ func main() { //entry point
 
 	//adding an Infinite For loop to execute the code of bookings multiple times.
 	for {
-		fmt.Printf("Welcome to %v booking application\n", conferenceName)
-		fmt.Printf("We have a total of %v tickets and %v are remaining.\n", conferenceTickets, remainingTickets)
-		fmt.Print("Get your tickets here to attend.\n")
+
+		greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 		var firstName string
 		var lastName string
@@ -89,4 +88,26 @@ func main() { //entry point
 			fmt.Printf(" __________________________________________________________\n\n")
 		}
 	}
+
+	// city := "New York"
+
+	// switch city {
+	// case "New York":
+	// 	// execute code for New York conference tickets.
+	// case "Singapore", "Hong Kong":
+	// 	// execute code for New York conference tickets.
+	// case "Malaysia":
+	// 	// execute code for New York conference tickets.
+	// case "London", "Melbourne":
+	// 	// execute code for New York conference tickets.
+
+	// default:
+	// 	fmt.Println("No valid city selected.")
+	// }
+}
+
+func greetUsers(confName string, confTickets uint, remTickets uint) {
+	fmt.Printf("Welcome to %v booking application\n", confName)
+	fmt.Printf("We have a total of %v tickets and %v are remaining.\n", confTickets, remTickets)
+	fmt.Print("Get your tickets here to attend.\n")
 }

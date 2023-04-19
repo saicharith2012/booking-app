@@ -41,28 +41,35 @@ func main() { //entry point
 		fmt.Println("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
 
-		remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
-		bookings = append(bookings, firstName+" "+lastName+",")
+		if userTickets <= remainingTickets {
 
-		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
-		fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
+			remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
+			bookings = append(bookings, firstName+" "+lastName+",")
 
-		firstNames := []string{}
+			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
+			fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
 
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-			firstNames = append(firstNames, names[0]+",")
+			firstNames := []string{}
 
-		}
+			for _, booking := range bookings {
+				var names = strings.Fields(booking)
+				firstNames = append(firstNames, names[0]+",")
 
-		fmt.Printf("The first names of all our bookings are: %v\n", firstNames)
+			}
 
-		fmt.Printf(" __________________________________________________________\n\n")
+			fmt.Printf("The first names of all our bookings are: %v\n", firstNames)
 
-		if remainingTickets == 0 {
-			//end program
-			fmt.Println("Our Conference is booked out. Come back next year.")
-			break //exits the program
+			fmt.Printf(" __________________________________________________________\n\n")
+
+			if remainingTickets == 0 {
+				//end program
+				fmt.Println("Our Conference is booked out. Come back next year.")
+				break //exits the program
+			}
+		} else {
+			fmt.Printf("We have only %v tickets available. So you can't book %v tickets. Come back next time.\n", remainingTickets, userTickets)
+			// continue; not needed.
+			fmt.Printf(" __________________________________________________________\n\n")
 		}
 	}
 }

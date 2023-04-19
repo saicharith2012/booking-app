@@ -22,23 +22,8 @@ func main() { //entry point
 
 		greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
-		var firstName string
-		var lastName string
-		var email string
-		var userTickets uint //uint since tickets cant be negative
-
-		// ask the user for name and no.of tickets
-		fmt.Println("Enter your first name: ")
-		fmt.Scan(&firstName) //scan for input ...takes memory address(pointer) of the variables as the argument.
-
-		fmt.Println("Enter your last name: ")
-		fmt.Scan(&lastName)
-
-		fmt.Println("Enter your email: ")
-		fmt.Scan(&email)
-
-		fmt.Println("Enter number of tickets: ")
-		fmt.Scan(&userTickets)
+		//asking user for inputs
+		firstName, lastName, email, userTickets := getUserInputs()
 
 		// user input validation
 		isValidName, isValidEmail, isTicketNumberPositive, isValidTicketNumber :=
@@ -121,4 +106,27 @@ func validateUserInputs(firstName string, lastName string, email string, userTic
 	isValidTicketNumber := userTickets <= remainingTickets // userTickets must be positive and less or equal to remaining tickets.
 
 	return isValidName, isValidEmail, isTicketNumberPositive, isValidTicketNumber
+}
+
+func getUserInputs() (string, string, string, uint) {
+	var firstName string
+	var lastName string
+	var email string
+	var userTickets uint //uint since tickets cant be negative
+
+	// ask the user for name and no.of tickets
+	fmt.Println("Enter your first name: ")
+	fmt.Scan(&firstName) //scan for input ...takes memory address(pointer) of the variables as the argument.
+
+	fmt.Println("Enter your last name: ")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Enter your email: ")
+	fmt.Scan(&email)
+
+	fmt.Println("Enter number of tickets: ")
+	fmt.Scan(&userTickets)
+
+	return firstName, lastName, email, userTickets
+
 }

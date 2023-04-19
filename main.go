@@ -55,7 +55,8 @@ func main() { //entry point
 			fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
 
 			// calling the function for printing the first names
-			printFirstNames(bookings)
+			var firstNames = getFirstNames(bookings) //return value of getFirstNames
+			fmt.Printf("The first names of all our bookings are: %v\n", firstNames)
 
 			fmt.Printf(" __________________________________________________________\n\n")
 
@@ -105,11 +106,11 @@ func greetUsers(confName string, confTickets uint, remTickets uint) {
 	fmt.Print("Get your tickets here to attend.\n")
 }
 
-func printFirstNames(bookings []string) {
+func getFirstNames(bookings []string) []string {
 	firstNames := []string{}
 	for _, booking := range bookings {
 		var names = strings.Fields(booking)
 		firstNames = append(firstNames, names[0]+",")
 	}
-	fmt.Printf("The first names of all our bookings are: %v\n", firstNames)
+	return firstNames
 }

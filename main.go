@@ -41,17 +41,16 @@ func main() { //entry point
 		fmt.Scan(&userTickets)
 
 		// user input validation
-		isValidName := len(firstName) >= 2 && len(lastName) >= 2 // firstName and lastName should contain atleast two letters.
-		isValidEmail := strings.Contains(email, "@")             // email must contain @ symbol
-		isTicketNumberPositive := userTickets > 0
-		isValidTicketNumber := userTickets <= remainingTickets // userTickets must be positive and less or equal to remaining tickets.
+		isValidName, isValidEmail, isTicketNumberPositive, isValidTicketNumber :=
+			validateUserInputs(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidName && isValidEmail && isTicketNumberPositive && isValidTicketNumber {
 
 			remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
 			bookings = append(bookings, firstName+" "+lastName+",")
 
-			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n", firstName, lastName, userTickets, email)
+			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n",
+				firstName, lastName, userTickets, email)
 			fmt.Printf("%v tickets remaining for the %v.\n", remainingTickets, conferenceName)
 
 			// calling the function for printing the first names
@@ -113,4 +112,13 @@ func getFirstNames(bookings []string) []string {
 		firstNames = append(firstNames, names[0]+",")
 	}
 	return firstNames
+}
+
+func validateUserInputs(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool, bool) {
+	isValidName := len(firstName) >= 2 && len(lastName) >= 2 // firstName and lastName should contain atleast two letters.
+	isValidEmail := strings.Contains(email, "@")             // email must contain @ symbol
+	isTicketNumberPositive := userTickets > 0
+	isValidTicketNumber := userTickets <= remainingTickets // userTickets must be positive and less or equal to remaining tickets.
+
+	return isValidName, isValidEmail, isTicketNumberPositive, isValidTicketNumber
 }

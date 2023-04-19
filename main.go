@@ -1,7 +1,8 @@
 package main
 
 import (
-	"fmt" //Format Package
+	"booking-app/helper" // for user defined packages format is module_name/package_name
+	"fmt"                //Format Package
 	"strings"
 )
 
@@ -29,7 +30,7 @@ func main() { //entry point
 
 		// user input validation
 		isValidName, isValidEmail, isTicketNumberPositive, isValidTicketNumber :=
-			validateUserInputs(firstName, lastName, email, userTickets)
+			helper.ValidateUserInputs(firstName, lastName, email, userTickets, remainingTickets)
 
 		if isValidName && isValidEmail && isTicketNumberPositive && isValidTicketNumber {
 

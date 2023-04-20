@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt" //Format Package
-	"strings"
+	"strconv"
 )
 
 // package level variables
@@ -10,7 +10,7 @@ import (
 var conferenceName = "Go Conference" // short declaration...const cannot be declared like this and type declaration cannot be done explicitly
 const conferenceTickets uint = 50    //cant be changed
 var remainingTickets uint = 50       //decreases as tickets get booked.
-var bookings []string
+var bookings = make([]map[string]string, 0)
 
 func main() { //entry point
 
@@ -88,11 +88,10 @@ func greetUsers() {
 	fmt.Print("Get your tickets here to attend.\n")
 }
 
-func getFirstNames([]string) []string {
+func getFirstNames([]map[string]string) []string {
 	firstNames := []string{}
 	for _, booking := range bookings {
-		var names = strings.Fields(booking)
-		firstNames = append(firstNames, names[0]+",")
+		firstNames = append(firstNames, booking["firstName"]+",")
 	}
 	return firstNames
 }
@@ -120,9 +119,18 @@ func getUserInputs() (string, string, string, uint) {
 
 }
 
-func bookTickets(userTickets uint, firstName string, lastName string, email string) ([]string, uint) {
+func bookTickets(userTickets uint, firstName string, lastName string, email string) ([]map[string]string, uint) {
 	remainingTickets = remainingTickets - userTickets //remaining tickets after booking.
-	bookings = append(bookings, firstName+" "+lastName+",")
+
+	// create a map for user
+	var userData = make(map[string]string)
+	userData["firstName"] = firstName
+	userData["lastName"] = lastName
+	userData["email"] = email
+	userData["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+
+	bookings = append(bookings, userData)
+	fmt.Printf("The list of bookings are %v\n", bookings)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email soon at %v.\n",
 		firstName, lastName, userTickets, email)

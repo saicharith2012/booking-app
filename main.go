@@ -41,6 +41,7 @@ func main() { //entry point
 
 			// calling bookTickets
 			bookTickets(userTickets, firstName, lastName, email)
+			sendTicket(userTickets, firstName, lastName, email)
 
 			// calling the function for printing the first names
 			var firstNames = getFirstNames(bookings) //return value of getFirstNames
@@ -144,4 +145,12 @@ func bookTickets(userTickets uint, firstName string, lastName string, email stri
 
 	return bookings, remainingTickets
 
+}
+
+func sendTicket(userTickets uint, firstName string, lastName string, email string) {
+	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
+
+	fmt.Println("#####################################")
+	fmt.Printf("Sending ticket: \n %v \nto email address %v\n", ticket, email)
+	fmt.Println("#####################################")
 }
